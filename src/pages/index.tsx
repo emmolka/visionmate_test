@@ -39,7 +39,7 @@ const Home = (): JSX.Element => {
     <Container>
       <ContentCenterer>
         <Button title={"Users"} onClick={redirectToUsers} />
-        <Button title="random user" onClick={handleRandomUser} />
+        <Button title="Random user" onClick={handleRandomUser} />
       </ContentCenterer>
     </Container>
   );

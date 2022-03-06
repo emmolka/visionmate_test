@@ -76,7 +76,7 @@ const Users = (): JSX.Element => {
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="Place first name or city"
           />
-          <Button title="anonymize" onClick={anonymizeEmailsHandler} />
+          <Button title="Anonymize" onClick={anonymizeEmailsHandler} />
         </InputWrapper>
         {loading && <LoadingText>Loading ...</LoadingText>}
         {!loading &&
