@@ -28,6 +28,16 @@ textarea {
   background-color: transparent;
 }
 
+button, input[type="submit"], input[type="reset"], input {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
 `;
 
 export default GlobalStyle;
