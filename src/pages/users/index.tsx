@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import Container from "../../components/Container";
 import User from "../../components/User";
@@ -19,6 +20,8 @@ const Users = (): JSX.Element => {
   const [searchValue, setSearchValue] = useState("");
 
   const debouncedSearchValue = useDebounce<string>(searchValue, 500);
+
+  const navigate = useNavigate();
 
   const getUsersHandler = async () => {
     try {
@@ -67,35 +70,35 @@ const Users = (): JSX.Element => {
   return (
     <Container>
       <InnerWrapper>
+        <InputWrapper>
+          <Input
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            placeholder="Place first name or city"
+          />
+          <Button title="anonymize" onClick={anonymizeEmailsHandler} />
+        </InputWrapper>
         {loading && <LoadingText>Loading ...</LoadingText>}
         {!loading &&
           (users.length > 0 ? (
             <UserWrapper>
-              <InputWrapper>
-                <Input
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                  placeholder="Place first name or city"
+              {users.map((user) => (
+                <User
+                  key={`${user.email}${user.location.city}`}
+                  email={user.email}
+                  imageSrc={user.picture.medium}
+                  firstName={user.name.first}
+                  lastName={user.name.last}
+                  city={user.location.city}
+                  onClick={() =>
+                    navigate(`${user.login.username}`, {
+                      state: {
+                        user,
+                      },
+                    })
+                  }
                 />
-                <Button title="anonymize" onClick={anonymizeEmailsHandler} />
-              </InputWrapper>
-              {users.map(
-                ({
-                  email,
-                  picture: { medium },
-                  name: { first, last },
-                  location: { city },
-                }) => (
-                  <User
-                    key={`${email}${city}${medium}`}
-                    email={email}
-                    imageSrc={medium}
-                    firstName={first}
-                    lastName={last}
-                    city={city}
-                  />
-                )
-              )}
+              ))}
             </UserWrapper>
           ) : (
             <LoadingText>No results</LoadingText>

@@ -1,14 +1,14 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Container from "../components/Container";
 import Button from "../components/Button";
 
 const Home = (): JSX.Element => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const redirectToUsers = () => {
-    history.push("/users");
+    navigate("/users");
   };
 
   return (

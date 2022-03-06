@@ -17,4 +17,5 @@ const StyledButton = styled.button`
   padding: 10px;
   border-radius: 5px;
   border: solid 1px ${({ theme }) => theme.lighterBackground};
+  color: ${({ theme }) => theme.white};
 `;

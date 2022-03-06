@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./css/globalStyles";
 import theme from "./css/theme";
@@ -10,12 +10,14 @@ const App = (): JSX.Element => (
   <Router>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/users" component={Users} />
-        <Route path="/users/:id" component={User} />
-        <Route component={() => <div>Not found</div>} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={Home} />
+        <Route path="users">
+          <Route index element={<Users />} />
+          <Route path=":username" element={<User />} />
+        </Route>
+        <Route element={() => <div>Not found</div>} />
+      </Routes>
     </ThemeProvider>
   </Router>
 );

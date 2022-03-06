@@ -23,8 +23,8 @@ const FullPageWrapper = styled.div`
 const InnerContainer = styled.div`
   width: 100%;
   max-width: 380px;
-  background: ${({ theme }) => theme.innerBackground};
   margin: 40px 0;
   padding: 10px;
   border-radius: 10px;
+  background: ${({ theme }) => theme.lightGrey};
 `;

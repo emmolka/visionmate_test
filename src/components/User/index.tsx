@@ -8,8 +8,12 @@ const User = ({
   firstName,
   lastName,
   city,
+  onClick,
+  username,
+  street,
+  postcode,
 }: UserComponent): JSX.Element => (
-  <UserWrapper>
+  <UserWrapper onClick={onClick}>
     <StyledImage src={imageSrc} />
     <UserInfoWrapper>
       <Name>
@@ -17,8 +21,15 @@ const User = ({
         &nbsp;
         {lastName}
       </Name>
-      <span>Email: {email}</span>
+      {email && <span>Email: {email}</span>}
+      {username && <span>Username: {username}</span>}
       <span> City: {city}</span>
+      {street && (
+        <span>
+          Street: {street.name} {street.number}
+        </span>
+      )}
+      {postcode && <span> Postcode: {postcode}</span>}
     </UserInfoWrapper>
   </UserWrapper>
 );
@@ -28,7 +39,13 @@ export default User;
 const UserWrapper = styled.div`
   width: 100%;
   display: flex;
-  height: 75px;
+  min-height: 75px;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 5px;
+  background: #fff;
+  padding: 5px;
+  cursor: pointer;
 `;
 
 const UserInfoWrapper = styled.div`

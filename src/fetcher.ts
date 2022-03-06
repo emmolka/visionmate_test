@@ -5,7 +5,9 @@ export const getUsers = async (): Promise<UserResponse[] | []> => {
   try {
     const {
       data: { results },
-    } = await axios.get(`https://randomuser.me/api/?results=200`);
+    } = await axios.get(
+      `https://randomuser.me/api/?results=200&inc=name,email,picture,login,location`
+    );
     return results;
   } catch (e) {
     alert(e);
