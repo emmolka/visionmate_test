@@ -26,7 +26,7 @@ const Users = (): JSX.Element => {
   const getUsersHandler = async () => {
     try {
       setLoading(true);
-      const results = await getUsers();
+      const results = await getUsers(200);
       setUsers(results);
       setCachedUsers(results);
     } catch (e) {

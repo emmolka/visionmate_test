@@ -1,1 +1,1 @@
-# visionmate Frontend challenge
+# frontend challenge
